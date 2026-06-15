@@ -1,128 +1,17 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>花灯里的数学韵社团 - 汇聚热爱，共同成长</title>
-  <!-- 样式库 -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-  
-  <!-- 自定义配置 -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#165DFF',
-            secondary: '#36CFC9',
-            dark: '#1D2129',
-            light: '#F2F3F5'
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui']
-          }
-        }
-      }
-    }
-  </script>
-
- <style type="text/tailwindcss">
-    @layer utilities {
-      .nav-active { @apply border-b-2 border-primary text-primary; }
-      .card-hover { @apply hover:shadow-lg hover:-translate-y-1 transition-all duration-300; }
-      .section { @apply py-16 md:py-20; }
-      .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
-      /* 滚动动画提速 30s→18s */
-      .animate-scroll {
-        animation: scroll 5s linear infinite;
-      }
-      @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-    }
-</style>
-
-<body class="bg-white text-dark antialiased">
-  <!-- 导航栏 -->
-  <header class="sticky top-0 z-50 bg-white shadow-sm">
-    <div class="container-custom">
-      <div class="flex justify-between items-center h-16">
-        <a href="#" class="flex items-center gap-2">
-          <span class="text-primary text-2xl"><i class="fa fa-star"></i></span>
-          <span class="text-xl font-bold text-primary">花灯里的数学韵社团</span>
-        </a>
-
-        <!-- 桌面菜单 -->
-        <nav class="hidden md:flex gap-8">
-          <a href="#home" class="nav-active font-medium">首页</a>
-          <a href="#about" class="font-medium hover:text-primary transition-colors">社团简介</a>
-          <a href="#activities" class="font-medium hover:text-primary transition-colors">课程展示</a>
-          <a href="#members" class="font-medium hover:text-primary transition-colors">课程成员</a>
-        </nav>
-
-        <!-- 移动端菜单按钮 -->
-        <button id="menuBtn" class="md:hidden text-xl">
-          <i class="fa fa-bars"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- 移动端下拉菜单 -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-      <div class="container-custom py-3 flex flex-col gap-3">
-        <a href="#home" class="py-2 px-3 hover:bg-light rounded">首页</a>
-        <a href="#about" class="py-2 px-3 hover:bg-light rounded">关于我们</a>
-        <a href="#activities" class="py-2 px-3 hover:bg-light rounded">课程展示</a>
-        <a href="#members" class="py-2 px-3 hover:bg-light rounded">核心成员</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- 首页 Banner -->
-<section id="home" class="bg-gradient-to-r from-primary to-secondary text-white py-10 md:py-14">
-  <div class="container-custom text-center">
-    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-4">
-      因热爱相聚 <br class="sm:hidden"/> 为梦想同行
-    </h1>
-    <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto mb-2">
-      花灯里的数学韵社团
-      <br>在这里遇见志同道合的伙伴，一起成长、一起发光
-    </p>
-  </div>
-</section>
-
-<!-- 社团简介 压缩灰色背景高度 -->
-<section id="about" class="py-8 md:py-10 bg-light">
+<section id="activities" class="py-10 md:py-12 overflow-hidden">
   <div class="container-custom">
-    <div class="text-center mb-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-2">社团简介</h2>
-    </div>
-
-    <div class="flex justify-center">
-        <div class="w-full max-w-4xl bg-white p-6 md:p-8 rounded-xl shadow card-hover">
-          <p class="text-gray-600 leading-relaxed indent-8">
-            本社团由数学老师与科学老师共同授课，以复合材料手工制作为载体，融合数学与科学知识。活动中，同学们将运用测量、轴对称、图形设计等数学知识规划作品结构，同时学习简单电路连接、光电原理等科学内容，动手制作发光、造型独特的创意作品。在动手实践中感受数学的严谨与科学的趣味，提升观察力、动手能力与创新思维，在快乐创作中学会跨学科思考，做爱思考、会创造的小小创客。我们将几何图形、对称规律、逻辑谜题与花灯结合，让数学变得有趣、生动、看得见、摸得着。
-          </p>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section id="activities" class="py-10 md:py-12">
-  <div class="w-full px-0">
-    <div class="text-center mb-8 container-custom">
+    <div class="text-center mb-8">
       <h2 class="text-3xl md:text-4xl font-bold mb-2">课程展示</h2>
     </div>
-    <div class="overflow-hidden">
-      <div class="flex animate-scroll whitespace-nowrap" id="scrollBox"></div>
-    </div>
+  </div>
+  <!-- 滚动外层，强制横向裁切 -->
+  <div class="w-full overflow-hidden">
+    <!-- 滚动容器，flex不换行，动画平移 -->
+    <div class="flex animate-scroll whitespace-nowrap" id="scrollBox"></div>
   </div>
 </section>
 
 <script>
-// 替换为jsDelivr可加载CDN链接
 const mediaFiles = [
   "https://cdn.jsdelivr.net/gh/Joanna-Qiao-GH/flower/1.jpg",
   "https://cdn.jsdelivr.net/gh/Joanna-Qiao-GH/flower/2.jpg",
@@ -140,96 +29,9 @@ const box = document.getElementById('scrollBox');
 let html = '';
 mediaFiles.forEach(url=>{
   html += url.endsWith('.mp4')
-  ?`<div class="shrink-0 w-[320px] overflow-hidden"><video class="w-full h-[420px] object-cover" autoplay muted loop playsinline src="${url}"></video></div>`
-  :`<div class="shrink-0 w-[320px] overflow-hidden"><img src="${url}" class="w-full h-[420px] object-cover" alt="花灯作品"></div>`;
+  ?`<div class="shrink-0 w-[260px] sm:w-[320px] mx-2 overflow-hidden"><video class="w-full h-[320px] sm:h-[420px] object-cover rounded-lg" autoplay muted loop playsinline src="${url}"></video></div>`
+  :`<div class="shrink-0 w-[260px] sm:w-[320px] mx-2 overflow-hidden"><img src="${url}" class="w-full h-[320px] sm:h-[420px] object-cover rounded-lg" alt="花灯作品"></div>`;
 })
+// 双倍内容实现无缝循环
 box.innerHTML = html + html;
 </script>
-
-<!-- 课程成员 紧凑布局 -->
-<section id="members" class="py-8 md:py-10 bg-light">
-  <div class="container-custom">
-    <div class="text-center mb-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-2">课程成员</h2>
-    </div>
-
-    <!-- 指导老师卡片 居中排布 -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
-      <div class="bg-white p-6 rounded-xl text-center card-hover">
-        <h3 class="font-semibold text-lg">乔钰涵</h3>
-        <p class="text-gray-600 text-sm mb-2">四（2）班、四（3）班数学教师<br>四年级信息技术教师</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl text-center card-hover">
-        <h3 class="font-semibold text-lg">郑敏娜</h3>
-        <p class="text-gray-600 text-sm mb-2">四（1）班数学教师<br>四（1）班、四（2）班科学教师</p>
-      </div>
-    </div>
-
-    <!-- 各班学生卡片 -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- 四（1）班 -->
-      <div class="bg-white p-6 rounded-xl text-center card-hover">
-        <h3 class="font-semibold text-lg mb-3">四（1）班</h3>
-        <p class="text-gray-600 text-sm leading-loose">
-          陈颢鑫、陈楷烨、李君浩<br>
-          王俊希、李康顺、林奕宸<br>
-          王若琰、王子辰、吴旻轩<br>
-          张亦为、张亦朗、吴佳诺<br>
-          肖品嘉
-        </p>
-      </div>
-
-      <!-- 四（2）班 -->
-      <div class="bg-white p-6 rounded-xl text-center card-hover">
-        <h3 class="font-semibold text-lg mb-3">四（2）班</h3>
-        <p class="text-gray-600 text-sm leading-loose">
-          林雨澄、冯昕悦、吴璟睿
-        </p>
-      </div>
-
-      <!-- 四（3）班 -->
-      <div class="bg-white p-6 rounded-xl text-center card-hover">
-        <h3 class="font-semibold text-lg mb-3">四（3）班</h3>
-        <p class="text-gray-600 text-sm leading-loose">
-          陈沐阳、陈正扬、张逸洋<br>
-          朱弈辰、文宇涵、孙峻晫<br>
-          王若熙、余紫妍、蒋潇然<br>
-          陈紫莹、张轩
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 页脚 -->
-<footer class="bg-dark text-white py-4">
-  <div class="container-custom text-center">
-    <p class="text-gray-400 text-sm">© 2026 花灯里的数学韵社团 版权所有 | 汇聚热爱，共同成长</p>
-  </div>
-</footer>
-
-  <!-- JS -->
-  <script>
-    // 移动端菜单切换
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // 点击菜单关闭移动端菜单
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-
-    // 平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-      });
-    });
-  </script>
-</body>
-</html>
